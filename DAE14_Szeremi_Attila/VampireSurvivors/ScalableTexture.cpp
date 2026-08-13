@@ -10,7 +10,7 @@
 //{
 //}
 
-ScalableTexture::ScalableTexture(Texture& texture) :
+ScalableTexture::ScalableTexture(const Texture& texture) :
 	m_pTexture{ texture }
 {
 }

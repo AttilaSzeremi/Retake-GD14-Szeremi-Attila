@@ -4,12 +4,12 @@ struct ScalableTexture final
 {
 public:
 	//ScalableTexture();
-	explicit ScalableTexture(Texture& texture);
+	explicit ScalableTexture(const Texture& texture);
 
 	~ScalableTexture() = default;
 
 	void Draw(const Rectf targerRec) const;
 private:
-	Texture& m_pTexture;
+	const Texture& m_pTexture;
 };
 
