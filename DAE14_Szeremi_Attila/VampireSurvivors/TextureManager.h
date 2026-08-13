@@ -11,7 +11,7 @@ public:
 	};
 	enum class textId
 	{
-
+		button_start = 0
 	};
 
 	TextureManager();

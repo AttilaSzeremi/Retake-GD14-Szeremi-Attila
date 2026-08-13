@@ -43,5 +43,6 @@ void TextureManager::LoadTextures()
 
 void TextureManager::LoadTexts()
 {
+	m_pTexts.push_back(new Texture{ "START", "cour.ttf", 80, Color4f{1.f,1.f,1.f,1.f} });
 }
 

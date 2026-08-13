@@ -30,5 +30,5 @@ private:
 	void ClearBackground() const;
 
 	// Variables
-	StartScreen m_StarterScreen{};
+	StartScreen* m_StarterScreen{};
 };

@@ -16,11 +16,12 @@ Game::~Game()
 void Game::Initialize()
 {
 	GameState::SetViewPort(GetViewPort());
-	m_StarterScreen.LoadDependentVariables();
+	m_StarterScreen = new StartScreen();
 }
 
 void Game::Cleanup()
 {
+	delete m_StarterScreen;
 }
 
 void Game::Update(float elapsedSec)
@@ -38,7 +39,7 @@ void Game::Update(float elapsedSec)
 	switch (GameState::GetGameState())
 	{
 	case GameState::gameStates::startScreen:
-		m_StarterScreen.Update(elapsedSec, pStates);
+		m_StarterScreen->Update(elapsedSec, pStates);
 		break;
 	default:
 		break;
@@ -51,7 +52,7 @@ void Game::Draw() const
 	switch (GameState::GetGameState())
 	{
 	case GameState::gameStates::startScreen:
-		m_StarterScreen.Draw();
+		m_StarterScreen->Draw();
 		break;
 	default:
 		break;
@@ -119,7 +120,7 @@ void Game::ProcessMouseUpEvent(const SDL_MouseButtonEvent& e)
 	//	std::cout << " middle button " << std::endl;
 	//	break;
 	//}
-	m_StarterScreen.ProcessMouseUpEvent(e);
+	m_StarterScreen->ProcessMouseUpEvent(e);
 }
 
 void Game::ClearBackground() const
