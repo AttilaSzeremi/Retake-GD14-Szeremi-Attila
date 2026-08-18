@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{600a848e-2303-4aee-92c9-ad55692f9532}</ProjectGuid>
+    <ProjectGuid>{8162a1d3-04d7-49de-adbc-a4a787fa68f7}</ProjectGuid>
     <RootNamespace>VampireSurvivors</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -160,23 +160,47 @@ xcopy "$(ProjectDir)Resources\*.*" "$(TargetDir)" /y /d /s</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Button.cpp" />
+    <ClCompile Include="BaseCharacter.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="FollowingEnemy.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameLoop.cpp" />
     <ClCompile Include="GameState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="ScalableTexture.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="ProjectileManager.cpp" />
+    <ClCompile Include="SpriteManager.cpp" />
+    <ClCompile Include="Spritesheet.cpp" />
     <ClCompile Include="StartScreen.cpp" />
-    <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="WeaponManager.cpp" />
+    <ClCompile Include="WhipProjectile.cpp" />
+    <ClCompile Include="WhipWeapon.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Button.h" />
+    <ClInclude Include="BaseCharacter.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="FollowingEnemy.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameLoop.h" />
     <ClInclude Include="GameState.h" />
+    <ClInclude Include="Map.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="ScalableTexture.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="ProjectileManager.h" />
+    <ClInclude Include="SpriteManager.h" />
+    <ClInclude Include="Spritesheet.h" />
     <ClInclude Include="StartScreen.h" />
-    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WeaponManager.h" />
+    <ClInclude Include="WhipProjectile.h" />
+    <ClInclude Include="WhipWeapon.h" />
   </ItemGroup>
   <!-- Import the custom .targets file -->
   <Import Project="Prog2Game.targets" />

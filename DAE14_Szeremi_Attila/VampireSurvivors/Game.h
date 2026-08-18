@@ -1,6 +1,14 @@
 #pragma once
 #include "BaseGame.h"
-#include "StartScreen.h"
+#include <vector>
+class SpriteManager;
+class Map;
+class Player;
+class BaseCharacter;
+class Texture;
+class StartScreen;
+class GameLoop;
+class SoundEffect;
 class Game : public BaseGame
 {
 public:
@@ -21,14 +29,23 @@ public:
 	void ProcessMouseMotionEvent(const SDL_MouseMotionEvent& e) override;
 	void ProcessMouseDownEvent(const SDL_MouseButtonEvent& e) override;
 	void ProcessMouseUpEvent(const SDL_MouseButtonEvent& e) override;
-
 private:
-
 	// FUNCTIONS
 	void Initialize();
 	void Cleanup();
 	void ClearBackground() const;
 
-	// Variables
-	StartScreen* m_StarterScreen{};
+	Texture* m_pBaseBackground{};
+	StartScreen* m_pStartScreen{};
+	GameLoop* m_pGameLoop{};
+
+	SpriteManager* m_pSpriteManager{};
+	Map* m_pMadForrest{};
+	Player* m_pPlayer{};
+	BaseCharacter* m_pAntonio{};
+
+	SoundEffect* m_pIntroSound{};
+	bool m_IntroSoundPlayed{ false };
+	//std::vector<Enemy*> m_Enemies{};
+	//Enemy* m_pEnemy{};
 };

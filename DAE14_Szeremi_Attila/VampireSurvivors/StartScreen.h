@@ -1,21 +1,20 @@
 #pragma once
 #include "GameState.h"
-#include "Button.h"
 class Texture;
-class StartScreen : public GameState
+class StartScreen final : public GameState
 {
 public:
-	// Inherited via GameState
-	void Draw() const override;
-	void Update(float deltaTime, const Uint8* pStates) override;
+	explicit StartScreen(Texture* background);
+	~StartScreen() = default;
 
-	virtual void ProcessMouseUpEvent(const SDL_MouseButtonEvent& e) override;
+	virtual void Draw() const override;
+	virtual void Update(float deltaTime, const Uint8* pStates) override;
 
-	StartScreen();
-	~StartScreen() override = default;
-
+	virtual void HandleMouseUpEvent(const Vector2f& mousePos) override;
+	virtual void ProcessKeyUpEvent(const SDL_KeyboardEvent& e) override;
 private:
-	Texture& m_pBackgroundTexture;
-	Button m_Button;
+	const Rectf m_StartButton{};
+
+	Texture* m_pBackgroundTexture{};
 };
 

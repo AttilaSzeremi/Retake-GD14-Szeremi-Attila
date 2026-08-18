@@ -2,45 +2,47 @@
 #include "StartScreen.h"
 #include "Texture.h"
 #include "utils.h"
-#include <iostream>
+//#include "Game.h"
 
-void StartScreen::Draw() const
+StartScreen::StartScreen(Texture* background) :
+	m_pBackgroundTexture{ background },
+	m_StartButton{ GetViewPort().width * 0.5f - 120,  GetViewPort().height * 0.25f, 240, 60 }
 {
+}
+
+void StartScreen::Draw() const {
 	const float
-		scale{ GetViewPort().height / m_pBackgroundTexture.GetHeight() },
-		ofset{ (m_pBackgroundTexture.GetWidth() * scale - GetViewPort().width) / 2.f };
+		scale{ GetViewPort().height / m_pBackgroundTexture->GetHeight() },
+		ofset{ (m_pBackgroundTexture->GetWidth() * scale - GetViewPort().width) / 2.f };
 	const Color4f
-		black{ 0.f, 0.f, 0.f, 1.f };
+		black{ 0.f, 0.f, 0.f, 1.f },
+		blue{ 0.f, 0.f, 1.f, 1.f };
 	utils::SetColor(black);
-	utils::FillRect(GetViewPort());
+	utils::FillRect(Rectf{ 0.f, 0.f, GetViewPort().width / 2.f, GetViewPort().height / 2.f });
 
 	glPushMatrix(); {
 		glTranslatef(ofset, 0.f, 0.f);
 		glScalef(scale, scale, 0.f);
-		m_pBackgroundTexture.Draw();
+		m_pBackgroundTexture->Draw();
 	}
 	glPopMatrix();
-
-	m_Button.Draw();
-	//std::cout << "[" << GetViewPort().left << "; " << GetViewPort().bottom << "]\nwidth: " << GetViewPort().width << "\nheight: " << GetViewPort().height << "\n";
-
+	utils::SetColor(blue);
+	utils::FillRect(m_StartButton);
 }
 
 void StartScreen::Update(float deltaTime, const Uint8* pStates)
 {
-	if (m_Button.IsClicked()) {
-		GameState::ChangeGameState(GameState::gameStates::characterSelect);
+}
+
+void StartScreen::HandleMouseUpEvent(const Vector2f& mousePos)
+{
+	if (utils::IsPointInRect(mousePos, m_StartButton)) {
+		ChangeGameState(gameStates::gameLoop);
 	}
 }
 
-void StartScreen::ProcessMouseUpEvent(const SDL_MouseButtonEvent& e)
+void StartScreen::ProcessKeyUpEvent(const SDL_KeyboardEvent& e)
 {
-	m_Button.ProcessMouseUpEvent(e);
 }
 
-StartScreen::StartScreen() :
-	GameState(),
-	m_pBackgroundTexture{ GetTextureManager().GetTexture(TextureManager::textureId::startScreenBG) },
-	m_Button{ GetTextureManager().GetTexture(TextureManager::textureId::button_blue), Rectf{GetViewPort().width / 2.f, 200.f, 200.f, 168.f}, GetTextureManager().GetTexts(TextureManager::textId::button_start) }
-{
-}
+

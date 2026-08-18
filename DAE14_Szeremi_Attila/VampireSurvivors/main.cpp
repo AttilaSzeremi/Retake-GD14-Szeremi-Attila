@@ -12,7 +12,7 @@ int SDL_main(int argv, char** args)
 
 	StartHeapControl();
 
-	Game* pGame{ new Game{ Window{ "Vampire Survivors - Szeremi, Attila - 1DAE14", 1280.f, 800.f } } };
+	Game* pGame{ new Game{ Window{ "Vampire Survivors - Szeremi, Attila - 1DAE14", 1280.f , 800.f } } };
 	pGame->Run();
 	delete pGame;
 
